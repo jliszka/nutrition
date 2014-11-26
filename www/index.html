@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <div id="home" class="screen">
+                <h1>NPO Calculator</h1>
+                <div class="button" id="tpnStart">TPN</div>
+                <div class="button" id="tubeFeedingStart">Tube feeding</div>
+            </div>
+
+            <div id="patient" class="screen">
+                <h1>Patient</h1>
+                <div class="line">
+                    <div id="sex" class="group">
+                        Sex:
+                        <div class="radio">M</div>
+                        <div class="radio selected">F</div>
+                    </div>
+                </div>
+                <div class="line">
+                    <input type="tel" id="height" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Height (in)
+                </div>
+                <div class="line">
+                    <input type="tel" id="weight" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Weight (kg)
+                </div>
+                <div class="line">
+                    <div id="ibw" class="display"></div>
+                    Ideal body weight (kg):
+                </div> 
+                <div class="line">
+                    <div id="weight2" class="display"></div>
+                    Weight to use (kg):
+                </div> 
+                <div class="line">
+                    <input type="tel" id="nonprotein_kg" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Non-protein kcal/kg/day
+                    <div class="hint">recommended 20-25 kcal/kg/day</div>
+                </div>
+                <div class="line">
+                    <input type="tel" id="protein_kg" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Protein kcal/kg/day
+                    <div class="hint">recommended 1.2-1.7 kcal/kg/day</div>
+                </div>
+                <div class="line">
+                    <div id="nonprotein" class="display"></div>
+                    Non-protein kcal/day:
+                </div>
+                <div class="line">
+                    <div id="protein" class="display"></div>
+                    Protein kcal/day:
+                </div>
+
+            </div>
+
+            <div id="tpn" class="screen">
+
+                <h2>Electrolytes</h2>
+
+                <div class="line">
+                    <input type="tel" id="na" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Na
+                </div>
+                <div class="line">
+                    <input type="tel" id="k" class="number" pattern="[0-9]+" maxlength="5"/>
+                    K
+                </div>
+                <div class="line">
+                    <input type="tel" id="cl" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Cl
+                </div>
+                <div class="line">
+                    <input type="tel" id="co2" class="number" pattern="[0-9]+" maxlength="5"/>
+                    CO<sub>2</sub>
+                </div>
+                <div class="line">
+                    <input type="tel" id="glucose" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Glucose
+                </div>
+                <div class="line">
+                    <input type="tel" id="ca" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Ca
+                </div>
+                <div class="line">
+                    <input type="tel" id="ca_albumin" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Ca adjusted for albumin
+                </div>
+                <div class="line">
+                    <input type="tel" id="albumin" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Albumin
+                </div>
+                <div class="line">
+                    <input type="tel" id="mg" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Mg
+                </div>
+                <div class="line">
+                    <input type="tel" id="phos" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Phos
+                </div>    
+
+                <h2>Volume</h2>
+
+                <div class="line">
+                    <div id="lipids_range" class="display"></div>
+                    Lipids suggestion range:
+                </div>
+
+                <div class="line">
+                    <div id="lipids" class="group">
+                        Lipids calories:
+                        <div class="radio">1000</div>
+                        <div class="radio">500</div>
+                        <div class="radio selected">200</div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <input type="tel" id="amino" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="amino_rec" class="display"></div>
+                    Amino acids
+                </div>
+
+                <div class="line">
+                    <input type="tel" id="dextrose1" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="dextrose1_rec" class="display"></div>
+                    Dextrose
+                    <div class="hint">g/day, 1st day</div>
+                </div>
+
+                <div class="line">
+                    <input type="tel" id="dextrose2" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="dextrose2_rec" class="display"></div>
+                    Dextrose
+                    <div class="hint">g/day, subsequent days</div>
+                </div>
+
+                <div class="line">
+                    <input type="tel" id="volume1" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="volume1_rec" class="display"></div>
+                    Volume
+                    <div class="hint">ccs/day, 1st day</div>
+                </div>
+
+                <div class="line">
+                    <input type="tel" id="volume2" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="volume2_rec" class="display"></div>
+                    Volume
+                    <div class="hint">ccs/day, subsequent days</div>
+                </div>
+                <div class="line">
+                    <div id="volume1_hr" class="display"></div>
+                    Volume
+                    <div class="hint">ccs/hr, 1st day</div>
+                </div>
+                <div class="line">
+                    <div id="volume2_hr" class="display"></div>
+                    Volume
+                    <div class="hint">ccs/hr, subsequent days</div>
+                </div>
+
+                <h2>Potassium</h2>
+
+                <div class="line">
+                    <div id="k_goal" class="display"></div>
+                    K goal
+                </div>
+                <div class="line">
+                    <input type="tel" id="kphos" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="kphos_rec" class="display"></div>
+                    Kphos
+                </div>
+                <div class="line">
+                    <input type="tel" id="kcl" class="number" pattern="[0-9]+" maxlength="5"/>
+                    KCl
+                </div>
+                <div class="line">
+                    <input type="tel" id="kacetate" class="number" pattern="[0-9]+" maxlength="5"/>
+                    Kacetate
+                </div>
+                <div class="line">
+                    <div id="k_remaining" class="display"></div>
+                    K remaining
+                </div>
+
+                <h2>Sodium</h2>
+                <div class="line">
+                    <input type="tel" id="na_goal" class="number" pattern="[0-9]+" maxlength="5"/>
+                    <div id="na_goal_rec" class="display"></div>
+                    Na per liter goal
+                </div>
+                <div class="line">
+                    <input type="tel" id="naphos" class="number" pattern="[0-9]+" maxlength="5"/>
+                    NaPhos
+                </div>
+                <div class="line">
+                    <input type="tel" id="nacl" class="number" pattern="[0-9]+" maxlength="5"/>
+                    NaCl
+                </div>
+                <div class="line">
+                    <input type="tel" id="naacetate" class="number" pattern="[0-9]+" maxlength="5"/>
+                    NaAcetate
+                </div>
+                <div class="line">
+                    <div id="na_remaining" class="display"></div>
+                    Na remaining
+                </div>
+
+
+
+            </div>
+
+            <div id="tube" class="screen">
+                <div class="line">
+                    <b>Select all that apply:</b>
+                </div>
+                <div class="line">
+                    <div id="diarrhea" class="checkbox"></div>
+                    Diarrhea
+                </div>
+                <div class="line">
+                    <div id="fluid" class="checkbox"></div>
+                    Fluid restriction
+                </div>
+                <div class="line">
+                    <div id="diabetes" class="checkbox"></div>
+                    Diabetes
+                </div>
+                <div class="line">
+                    <div id="hepatic" class="checkbox"></div>
+                    Hepatic failure
+                </div>
+                <div class="line">
+                    <div id="renal34" class="checkbox"></div>
+                    Renal failure, stage 3-4
+                </div>
+                <div class="line">
+                    <div id="renal5" class="checkbox"></div>
+                    Renal failure, stage 5
+                </div>
+                <div class="line">
+                    <div id="wound" class="checkbox"></div>
+                    Wound
+                </div>
+
+                <h2>Recommendations</h2>
+
+                <table class="table" cellspacing="0" cellpadding="4">
+                    <tr>
+                        <th></th>
+                        <th>rate per hour</th>
+                        <th>prostats</th>
+                    </tr>
+                    <tr id="jevity12" class="hidden">
+                        <td class="label">Jevity 1.2</td>
+                        <td><div id="jevity12_rate"></div></td>
+                        <td><div id="jevity12_pros"></div></td>
+                    </tr>
+                    <tr id="osmolite12" class="hidden">
+                        <td class="label">Osmolite 1.2</td>
+                        <td><div id="osmolite12_rate"></div></td>
+                        <td><div id="osmolite12_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="twocal" class="hidden">
+                        <td class="label">TwoCal</td>
+                        <td><div id="twocal_rate"></div></td>
+                        <td><div id="twocal_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="glucerna12" class="hidden">
+                        <td class="label">Glucerna 1.2</td>
+                        <td><div id="glucerna12_rate"></div></td>
+                        <td><div id="glucerna12_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="glucerna15" class="hidden">
+                        <td class="label">Glucerna 1.5</td>
+                        <td><div id="glucerna15_rate"></div></td>
+                        <td><div id="glucerna15_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="nutrihep" class="hidden">
+                        <td class="label">NutriHep</td>
+                        <td><div id="nutrihep_rate"></div></td>
+                        <td><div id="nutrihep_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="jevity15" class="hidden">
+                        <td class="label">Jevity 1.5</td>
+                        <td><div id="jevity15_rate"></div></td>
+                        <td><div id="jevity15_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="nepro" class="hidden">
+                        <td class="label">Nepro</td>
+                        <td><div id="nepro_rate"></div></td>
+                        <td><div id="nepro_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="suplena" class="hidden">
+                        <td class="label">Suplena</td>
+                        <td><div id="suplena_rate"></div></td>
+                        <td><div id="suplena_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="vital1" class="hidden">
+                        <td class="label">Vital 1</td>
+                        <td><div id="vital1_rate"></div></td>
+                        <td><div id="vital1_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="vital15" class="hidden">
+                        <td class="label">Vital 1.5</td>
+                        <td><div id="vital15_rate"></div></td>
+                        <td><div id="vital15_pros"></div>
+                        </td>
+                    </tr>
+                    <tr id="promote" class="hidden">
+                        <td class="label">Promote</td>
+                        <td><div id="promote_rate"></div></td>
+                        <td><div id="promote_pros"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
